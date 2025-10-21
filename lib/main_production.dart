@@ -1,10 +1,19 @@
 import 'package:clarity/core/di/get_it.dart';
 import 'package:clarity/core/routing/generated_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupDependencies();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor:
+          Colors.redAccent, // 👈 Make status bar transparent or set your color
+      statusBarIconBrightness: Brightness.dark, // 👈 For Android
+      statusBarBrightness: Brightness.light, // 👈 For iOS
+    ),
+  );
   runApp(const MyApp());
 }
 

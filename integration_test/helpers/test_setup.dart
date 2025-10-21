@@ -1,5 +1,5 @@
 import 'package:clarity/core/di/get_it.dart';
-import 'package:clarity/main.dart';
+import 'package:clarity/main_development.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Helper to properly initialize the app for integration tests
