@@ -30,6 +30,28 @@ android {
         versionName = flutter.versionName
     }
 
+    // todo add the flavors here 
+  
+    flavorDimensions += "default"
+    productFlavors {
+        create("devlopment") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "Clarity app development")
+            applicationIdSuffix = ".dev"
+        }
+        create("production") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "clarity app production")
+           
+        }
+    
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
