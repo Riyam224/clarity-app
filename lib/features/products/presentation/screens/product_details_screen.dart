@@ -1,8 +1,10 @@
+import 'package:clarity/core/routing/app_routes.dart';
 import 'package:clarity/features/products/presentation/cubit/cubit/products_cubit.dart';
 import 'package:clarity/features/products/presentation/cubit/cubit/products_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final int id;
@@ -15,7 +17,15 @@ class ProductDetailsScreen extends StatelessWidget {
       lazy: false,
       create: (_) => GetIt.instance<ProductsCubit>()..fetchProductDetails(id),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Product Details')),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              GoRouter.of(context).go(AppRoutes.products);
+            },
+          ),
+          title: const Text('Product Details'),
+        ),
         body: BlocBuilder<ProductsCubit, ProductsState>(
           builder: (context, state) {
             if (state is ProductsLoading) {
